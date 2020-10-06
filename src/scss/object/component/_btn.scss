@@ -1,0 +1,19 @@
+.c-btn {
+  display: block;
+  padding: 15px 25px;
+  height: auto;
+  outline: none;
+  background-color: $btn_color-create;
+  color: #ffffff;
+  transition: all .4s ease;
+  &:hover{
+      cursor: pointer;
+      background-color: #65807d;
+      transition: all .4s ease;
+  }
+  &__wrapp {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+}

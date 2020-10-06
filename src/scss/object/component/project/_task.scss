@@ -1,0 +1,54 @@
+.p-task {
+  &__list {
+    position: relative;
+  }
+  &__item {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+    background-color: #fff;
+    transition: background-color 0.4s ease;
+    @include custumRadius(5px);
+    user-select: none;
+    padding: 8px;
+    &__text {
+      padding: 5px 0px;
+      user-select: none; // テキストを選択できないようにする
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    &__wrapp {
+      position: absolute;
+      top: 16%;
+      left: 14%;
+      min-width: 30%;
+      min-height: 90%;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    &--isDone {
+      background-color: #c0c0c0;
+      transition: background-color 0.4s ease;
+    }
+    &--isDoneText {
+      text-decoration: line-through;
+    }
+  }
+  &__trash {
+    color: rgb(255, 0, 0);
+    float: right;
+    margin-top: -1%;
+    margin-right: -2%;
+    font-size: 1.3rem;
+    padding: 8px;
+    transition: color 0.3s ease;
+    &:hover {
+      cursor: pointer;
+      color: rgb(255, 169, 169);
+      transition: color 0.3s ease;
+    }
+  }
+}

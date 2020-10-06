@@ -1,0 +1,62 @@
+// font-sizeやcolor inputなどを共通化しておく。
+html,
+body {
+  width: 100%;
+  height: 100%;
+  color: $font-color_default;
+  font-size: $font-size_default;
+  font-family: Nunito, M plus\1p, Helvetica Neue, ヒラギノ角ゴ ProN W3, Hiragino Kaku Gothic ProN, Arial, Meiryo, sans-serif;
+  line-height: 1.6;
+  text-size-adjust: 100%; // スマホを横向きにしたときのフォントの拡大を防ぐ（親要素のフォントサイズに対する割合にしている）
+  letter-spacing: 0.1em;
+  // background-image: url("/img/todo_background.jpg");
+}
+
+// IEではmain要素が display:inline になっているので
+main {
+  display: block;
+}
+
+p,
+a {
+  -webkit-font-smoothing: antialiased; // フォントを見やすくさせる
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom; // imgタグに入る余白を消す
+}
+
+input {
+  border: 1px solid $color-default;
+}
+
+button {
+  outline: none;
+}
+
+*,
+:after,
+:before {
+  box-sizing: inherit; // 親要素の値を継承する
+}
+
+.particles-js-canvas-el{
+  position: fixed;
+  background-color: #5f65a4;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}

@@ -1,0 +1,13 @@
+.c-valid {
+  color: red;
+  &__wrapp {
+    text-align: right;
+  }
+  &__error{
+    background: #ffe1df;
+    border-color: #ff6366;
+    &:focus {
+        border-color: #ff6366;
+      }
+  }
+}

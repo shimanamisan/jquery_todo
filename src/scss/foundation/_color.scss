@@ -1,0 +1,29 @@
+// プロジェクト内で利用する色コードを変数化して一元管理するファイル
+
+// ヘッダーとフッターの背景
+$background-header: #0a0b37;
+$background-footer: #0a0b37;
+
+// 会員登録や認証系画面の背景
+$background-auth: #fff;
+$border-color: #1e73be;
+
+// 各画面のベースとなる背景
+$background-body-color: #f6f6f6;
+
+// ボタンの色
+$btn_color: #0a0b37;
+$btn_color-Social: #1da1f2;
+$btn_color-submit: #62abf8;
+$btn_color-create: #52a5a1;
+$check_box_color_sub: #f2fffe;
+
+// 文字の色
+$font-color_default: #707070;
+$font-color_primary: #fff;
+
+// リンクの色
+$link-color: #2980b9;
+
+// 汎用的なベースカラー
+$color-default: #f7f8f8;

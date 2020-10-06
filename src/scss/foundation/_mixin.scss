@@ -1,0 +1,35 @@
+// ブレークポイント
+$breackpoints: (
+  "ss": "screen and (max-width: 360px)",
+  "sm": "screen and (max-width: 414px)",
+  "md": "screen and (max-width: 768px)",
+  "lg": "screen and (max-width: 1024px)",
+) !default;
+
+@mixin mq($breackpoint: sm) {
+  @media #{map-get($breackpoints, $breackpoint)} {
+    @content;
+  }
+}
+
+// ブレークポイント（hover制御）
+$hoverBreackpoints: (
+  "pc": "screen and (min-width: 1024px)",
+  // PC表示の場合のみhoverを適用するようにする
+) !default;
+
+@mixin pchvoer($pcBreackpoint: pc) {
+  @media #{map-get($hoverBreackpoints, $pcBreackpoint)} {
+    @content;
+  }
+}
+
+// ボーダーラディウス
+@mixin custumRadius($value: 3px) {
+  border-radius: $value;
+}
+
+// ボックスシャドウ
+@mixin custumShadow($h: 0px, $v: 4px, $b: 10px, $s: 0px, $color: rgba(155, 155, 155, 0.2)) {
+  box-shadow: $h $v $b $s $color;
+}
