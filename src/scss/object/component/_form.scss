@@ -11,6 +11,9 @@
     outline: none;
     border: 2px solid #1e73be;
   }
+  &::placeholder {
+    font-size: 0.9em;
+  }
   &__wrapp {
     position: relative;
     width: 100%;
@@ -33,10 +36,10 @@
     position: relative;
   }
   &__edit {
+    display: none;
     position: relative;
     z-index: 3;
-    width: 77%;
-    display: inline-block;
+    width: 100%;
     font-size: 1rem;
     height: 27px;
   }

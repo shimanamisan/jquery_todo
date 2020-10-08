@@ -1,13 +1,14 @@
 .c-valid {
   color: red;
+  display: none;
   &__wrapp {
     text-align: right;
   }
-  &__error{
+  &__error {
     background: #ffe1df;
     border-color: #ff6366;
     &:focus {
-        border-color: #ff6366;
-      }
+      border-color: #ff6366;
+    }
   }
 }

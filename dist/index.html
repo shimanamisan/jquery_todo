@@ -3,16 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,700|Nunito:400,700&display=swap" />
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.min.css" />
-    <title>Document</title>
+    <title>jQuery | TODOリスト</title>
   </head>
   <body>
-    <div id="particles-js" class="l-main__gb">  </div>
-    <h1>Hello World!!</h1>
-    <div class="main">
-      <div class="sub">
-        <div class="box"><button>ボタン1</button></div>
-        <div class="box"><button>ボタン2</button></div>
+    <div id="particles-js" class="l-main__gb"></div>
+    <div class="l-main">
+      <div class="l-main__inner">
+        <div class="p-title__wrapp">
+          <h1 class="p-title">Todo List</h1>
+          <img class="p-logo" src="img/jquery_logo.svg" alt="" />
+        </div>
+        <div class="l-main__sub">
+          <div class="c-form__wrapp">
+            <input class="c-form c-form__create js-add-todo js-get-val" type="text" placeholder="Shift + Enterキーで新しいタスクを追加" />
+            <div class="c-valid__wrapp">
+              <p class="c-valid js-valid-msg">入力必須です</p>
+            </div>
+          </div>
+          <div class="c-btn__wrapp">
+            <button class="c-btn" @click="deleteTask">完了タスクを消去</button>
+            <button class="c-btn">他のアプリを見る</button>
+          </div>
+          <div class="c-form__wrapp">
+            <input class="c-form c-form__search js-search" type="text" placeholder="リストを検索" />
+            <i class="fas fa-search c-form__search__icon"></i>
+          </div>
+          <div class="p-task">
+            <ul class="p-task__list js-todo-list">
+              <li class="p-task__item js-todo-item" data-text="Todo01">
+                <i class="c-form__check far fa-circle js-todo-done"></i>
+                <div class="p-task__item__wrapp">
+                  <span class="p-task__item__text js-todo-text-done js-task-edit">Todo01</span>
+                  <input class="c-form c-form__edit js-task-edit-form" placeholder="Shift + Enterキーで編集を完了" type="text" />
+                </div>
+                <i class="fas fa-trash-alt p-task__trash js-todo-trash"></i>
+              </li>
+              <li class="p-task__item js-todo-item" data-text="Todo01">
+                <i class="c-form__check far fa-circle js-todo-done"></i>
+                <div class="p-task__item__wrapp">
+                  <span class="p-task__item__text js-todo-text-done js-task-edit">Todo02</span>
+                  <input class="c-form c-form__edit js-task-edit-form" placeholder="Shift + Enterキーで編集を完了" type="text" />
+                </div>
+                <i class="fas fa-trash-alt p-task__trash js-todo-trash"></i>
+              </li>
+              <li class="p-task__item js-todo-item" data-text="Todo01">
+                <i class="c-form__check far fa-circle js-todo-done"></i>
+                <div class="p-task__item__wrapp">
+                  <span class="p-task__item__text js-todo-text-done js-task-edit">Todo03</span>
+                  <input class="c-form c-form__edit js-task-edit-form" placeholder="Shift + Enterキーで編集を完了" type="text" />
+                </div>
+                <i class="fas fa-trash-alt p-task__trash js-todo-trash"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
     <script src="js/bundle.min.js"></script>
