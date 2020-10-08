@@ -70,7 +70,13 @@ https://pisuke-code.com/convert-jquery-and-dom-to-each/
 */
 $(document).on("click", ".js-todo-done", function () {
   // next()：指定した要素の次にある兄弟要素を取得。そこへ新たにテキスト用のDONEクラスを付けている
-  $(this).toggleClass("far fa-circle").toggleClass("fas fa-check-circle").next().toggleClass("p-task__item--isDoneText");
+  $(this)
+    .toggleClass("far fa-circle")
+    .toggleClass("fas fa-check-circle")
+    .next()
+    .toggleClass("p-task__item--isDoneText")
+    .closest(".js-todo-item")
+    .toggleClass("p-task__item--isDone");
 });
 
 /****************************************
@@ -104,10 +110,18 @@ $(document).on("dblclick", ".js-task-edit", function () {
 $(document).on("keyup", ".js-task-edit-form", function (event) {
   if (event.key !== undefined && event.shiftKey === true) {
     let $this = $(this); // DOMそキャッシュしておく
+    let value = $this.val();
+    if (!value) {
+      $this.addClass("c-valid__error");
+      $this.attr("placeholder", "入力必須です");
+      return;
+    }
     // 1. input要素を非表示
     // 2. 兄弟要素よりjs-task-editクラスのついたspanタグを探してくる
     // 3. その要素のテキスト内容を修正して表示する
     $this.hide().siblings(".js-task-edit").text($this.val()).show();
+    $this.removeClass("c-valid__error");
+    $this.attr("placeholder", "Shift + Enterキーで編集を完了");
   }
 });
 
