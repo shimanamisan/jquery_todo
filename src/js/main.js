@@ -53,6 +53,48 @@ $(function () {
       $(".js-todo-list").append(taskItem);
     }
   });
+
+  /****************************************
+タスクの絞り込み機能
+*****************************************/
+  // 1. 検索エリアに入力がある度にイベントを発火
+  // 2. 全てのタスクリスト要素（js-todo-item）を取得し、ループして展開
+  // 3. 検索結果にマッチするもの意外を非表示にする
+  $(".js-search").on("keyup", function () {
+    let searchValue = $(this).val();
+
+    $(".js-todo-item")
+      .show()
+      .each(function (index, element) {
+        // index：ループの今何番目かが入ってくる
+        // element：ループで取り出したDOM（HTML要素）が入ってくる
+
+        // data属性の価を取得して検索用に使う
+        let text = $(element).data("text");
+        let regexp = new RegExp("^" + searchValue); // 前方一致の条件で検索 正規表現チェッカー http://okumocchi.jp/php/re.php
+        console.log(regexp);
+
+        if (text && text.match(regexp)) {
+          return true;
+        }
+        $(element).hide();
+      });
+  });
+  /****************************************
+タスクの一括削除
+*****************************************/
+  $(".js-delete-all").on("click", function () {
+    let $jsTodoItem = $(".js-todo-item");
+    if (confirm("完了したタスクを消去します。\n よろしいですか？")) {
+      if ($jsTodoItem.hasClass("p-task__item--isDone")) {
+        $jsTodoItem.each(function (index, elm) {
+          if ($(elm).hasClass("p-task__item--isDone")) {
+            $(elm).remove();
+          }
+        });
+      }
+    }
+  });
 });
 
 /****************************************
@@ -99,8 +141,10 @@ $(document).on("click", ".js-todo-trash", function () {
 タスク編集の処理 
 *****************************************/
 $(document).on("dblclick", ".js-task-edit", function () {
+  // spanタグ内のテキストを取得
+  let value = $(this).text();
   // siblings：兄弟要素をすべて取得。ここでは引数に指定した兄弟要素を取得している
-  $(this).hide().siblings(".js-task-edit-form").show();
+  $(this).hide().siblings(".js-task-edit-form").attr("value", value).show(); // value属性にspanタグで取得したテキストを代入
 });
 
 /****************************************
@@ -109,7 +153,7 @@ $(document).on("dblclick", ".js-task-edit", function () {
 // テキストボックスでエンターキーがキーアップしたら処理を完了する
 $(document).on("keyup", ".js-task-edit-form", function (event) {
   if (event.key !== undefined && event.shiftKey === true) {
-    let $this = $(this); // DOMそキャッシュしておく
+    let $this = $(this); // DOMをキャッシュしておく
     let value = $this.val();
     if (!value) {
       $this.addClass("c-valid__error");
@@ -124,30 +168,19 @@ $(document).on("keyup", ".js-task-edit-form", function (event) {
     $this.attr("placeholder", "Shift + Enterキーで編集を完了");
   }
 });
-
-/****************************************
-タスクの絞り込み機能
-*****************************************/
-// 1. 検索エリアに入力がある度にイベントを発火
-// 2. 全てのタスクリスト要素（js-todo-item）を取得し、ループして展開
-// 3. 検索結果にマッチするもの意外を非表示にする
-$(".js-search").on("keyup", function () {
-  let searchValue = $(this).val();
-
-  $(".js-todo-item")
-    .show()
-    .each(function (index, element) {
-      // index：ループの今何番目かが入ってくる
-      // element：ループで取り出したDOM（HTML要素）が入ってくる
-
-      // data属性の価を取得して検索用に使う
-      let text = $(element).data("text");
-      let regexp = new RegExp("^" + searchValue); // 前方一致の条件で検索 正規表現チェッカー http://okumocchi.jp/php/re.php
-      console.log(regexp);
-
-      if (text && text.match(regexp)) {
-        return true;
-      }
-      $(element).hide();
-    });
+// input要素へのフォーカスが外れたときも編集した値を保存する
+$(document).on("blur", ".js-task-edit-form", function (event) {
+  let $this = $(this); // DOMをキャッシュしておく
+  let value = $this.val();
+  if (!value) {
+    $this.addClass("c-valid__error");
+    $this.attr("placeholder", "入力必須です");
+    return;
+  }
+  // 1. input要素を非表示
+  // 2. 兄弟要素よりjs-task-editクラスのついたspanタグを探してくる
+  // 3. その要素のテキスト内容を修正して表示する
+  $this.hide().siblings(".js-task-edit").text($this.val()).show();
+  $this.removeClass("c-valid__error");
+  $this.attr("placeholder", "Shift + Enterキーで編集を完了");
 });
