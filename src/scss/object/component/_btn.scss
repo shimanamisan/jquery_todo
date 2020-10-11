@@ -5,11 +5,18 @@
   outline: none;
   background-color: $btn_color-create;
   color: #ffffff;
-  transition: all .4s ease;
-  &:hover{
-      cursor: pointer;
-      background-color: #65807d;
-      transition: all .4s ease;
+  transition: all 0.4s ease;
+  @include mq() {
+    padding: 10px 15px;
+    &:hover {
+      cursor: none;
+      transition: none;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: #65807d;
+    transition: all 0.4s ease;
   }
   &__wrapp {
     display: flex;

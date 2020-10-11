@@ -1,0 +1,79 @@
+.c-modal {
+  display: none;
+  position: fixed;
+  height: calc(100vh - 100px);
+  width: 60%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  @include custumRadius(3px);
+  @include mq() {
+    width: 90%;
+  }
+  z-index: 101;
+  &__bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+  }
+  &__body {
+    padding: 48px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    &__list {
+      margin-bottom: 32px;
+      & > div > p {
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+.close.icon {
+  color: #000;
+  position: absolute;
+  top: 4%;
+  right: 4%;
+  margin-top: 0;
+  margin-left: 0;
+  width: 30px;
+  height: 30px;
+}
+
+.close:hover {
+  cursor: pointer;
+}
+
+.close.icon:before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  width: 30px;
+  height: 1px;
+  background-color: currentColor;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.close.icon:after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  width: 30px;
+  height: 1px;
+  background-color: currentColor;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

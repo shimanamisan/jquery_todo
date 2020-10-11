@@ -33,6 +33,10 @@ a:hover {
   transition: 0.3s;
 }
 
+li {
+  list-style: none;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -53,7 +57,7 @@ button {
   box-sizing: inherit; // 親要素の値を継承する
 }
 
-.particles-js-canvas-el{
+.particles-js-canvas-el {
   position: fixed;
   background-color: #9fa1b6;
   background-repeat: no-repeat;

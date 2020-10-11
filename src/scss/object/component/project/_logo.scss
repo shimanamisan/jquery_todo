@@ -1,4 +1,7 @@
-.p-logo{
-    width: 130px;
-    height: auto;
+.p-logo {
+  width: 100px;
+  height: auto;
+  @include mq() {
+    width: 90px;
+  }
 }
